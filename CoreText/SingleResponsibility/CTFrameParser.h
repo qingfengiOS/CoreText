@@ -15,6 +15,7 @@
  */
 @interface CTFrameParser : NSObject
 
++ (CoreTextData *)parseContent:(NSString *)content config:(CTFrameParserConfig*)config;
 
 /**
  通过配置计算文字CoreTextData
@@ -23,6 +24,7 @@
  @param config 配置信息
  @return CoreTextData
  */
-+ (CoreTextData *)parseContent:(NSString *)content config:(CTFrameParserConfig *)config;
++ (CoreTextData *)parseAttributedContent:(NSAttributedString *)content config:(CTFrameParserConfig *)config;
 
++ (NSDictionary *)attributesWithConfig:(CTFrameParserConfig *)config;
 @end

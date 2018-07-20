@@ -19,24 +19,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hN-s4-BZx" customClass="CTDisplayView">
-                                <rect key="frame" x="67" y="268" width="240" height="130"/>
+                                <rect key="frame" x="67" y="40" width="240" height="130"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="NCU-MI-9Ey"/>
                                     <constraint firstAttribute="height" constant="130" id="zfr-LR-s3M"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NGu-cb-KUs" customClass="CoreTextDisplayView">
+                                <rect key="frame" x="33" y="184" width="317" height="451"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="3hN-s4-BZx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3e0-Rn-bOT"/>
-                            <constraint firstItem="3hN-s4-BZx" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SL9-Pp-fkw"/>
+                            <constraint firstItem="3hN-s4-BZx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="k1k-Sv-mga"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="ctView" destination="NGu-cb-KUs" id="bbt-bf-YhU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="140" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>
