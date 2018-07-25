@@ -10,6 +10,7 @@
 #import "CoreTextDisplayView.h"
 #import "CTFrameParser.h"
 #import "UIView+frameAdjust.h"
+#import "CoreTextLinkData.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet CoreTextDisplayView *ctView;
@@ -23,7 +24,9 @@
 
     
 //    [self drawWithString];
-    [self drawWithAttributedString];
+//    [self drawWithAttributedString];
+    
+    [self userProtocol];
 }
 
 - (void)drawWithString {
@@ -64,6 +67,53 @@
 }
 
 
+- (void)userProtocol {
+    
+    //富文本配置内容
+    CTFrameParserConfig *config = [[CTFrameParserConfig alloc]init];
+    config.width = [UIScreen mainScreen].bounds.size.width - 20;
+    config.textColor = [UIColor blueColor];
+    NSString *promotString = @"点击下一步表示已阅读并同意";
+    NSString *contentString = @"《关于民航乘客携带锂电池及危险品乘机的限制》、《合众附加综合交通工具意外伤害医疗保险（2013修订）条款》、《航空意外险说明》、《客户告知书》。";
+    NSString *content = [NSString stringWithFormat:@"%@%@",promotString,contentString];
+    
+    NSDictionary *att = [CTFrameParser attributesWithConfig:config];
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc]initWithString:content attributes:att];
+    
+    //富文本前的提示不需要特殊颜色
+    CTFrameParserConfig *darkGrayConfig = [[CTFrameParserConfig alloc]init];
+    NSDictionary *darkGrayAtt = [CTFrameParser attributesWithConfig:darkGrayConfig];
+    [attributedString addAttributes:darkGrayAtt range:NSMakeRange(0, 13)];
+ 
+    //由绘制文本和配置信息获取数据源
+    CoreTextData *data = [CTFrameParser parseAttributedContent:attributedString config:config];
+    data.linkArray = [self configLinkArray:promotString contentString:contentString];
+    self.ctView.data = data;
+    self.ctView.height = data.height;
+    self.ctView.backgroundColor = [UIColor whiteColor];
+}
 
+
+//设置点击链接数据
+- (NSMutableArray *)configLinkArray:(NSString *)promotString contentString:(NSString *)contentString {
+    NSMutableArray *linkarray = [NSMutableArray array];
+    NSArray *array = [contentString componentsSeparatedByString:@"、"];
+    NSArray *urlArray = @[@"http://www.shanglv51.com/Content/Static/OpportunityNotice.html",
+                          @"http://www.shanglv51.com/Content/doc/合众附加综合交通工具意外伤害医疗保险（2013修订）条款.pdf",
+                          @"http://www.shanglv51.com/Content/doc/航空意外险说明.pdf",
+                          @"http://www.shanglv51.com/Content/doc/客户告知书.pdf"];
+    NSInteger start = promotString.length;
+    for (NSUInteger i = 0; i < array.count; i++) {
+        NSString *str = array[i];
+        CoreTextLinkData *linkData = [[CoreTextLinkData alloc]init];
+        linkData.title = str;
+        linkData.url = urlArray[i];
+        linkData.range = NSMakeRange(start, str.length);
+        [linkarray addObject:linkData];
+        start += str.length + 1;
+    }
+    return linkarray;
+    
+}
 
 @end

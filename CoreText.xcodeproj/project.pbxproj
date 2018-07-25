@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD3CE51E21082B7E002EE37B /* CoreTextLinkData.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3CE51D21082B7E002EE37B /* CoreTextLinkData.m */; };
+		FD3CE52121082BB1002EE37B /* CoreTextUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = FD3CE52021082BB1002EE37B /* CoreTextUtils.m */; };
 		FD5426C6210032A400708D45 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5426C5210032A400708D45 /* AppDelegate.m */; };
 		FD5426C9210032A400708D45 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD5426C8210032A400708D45 /* ViewController.m */; };
 		FD5426CC210032A400708D45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD5426CA210032A400708D45 /* Main.storyboard */; };
@@ -41,6 +43,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FD3CE51C21082B7E002EE37B /* CoreTextLinkData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreTextLinkData.h; sourceTree = "<group>"; };
+		FD3CE51D21082B7E002EE37B /* CoreTextLinkData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreTextLinkData.m; sourceTree = "<group>"; };
+		FD3CE51F21082BB1002EE37B /* CoreTextUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreTextUtils.h; sourceTree = "<group>"; };
+		FD3CE52021082BB1002EE37B /* CoreTextUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CoreTextUtils.m; sourceTree = "<group>"; };
 		FD5426C1210032A400708D45 /* CoreText.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreText.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD5426C4210032A400708D45 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FD5426C5210032A400708D45 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -97,6 +103,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD3CE51B21082B64002EE37B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FD3CE51C21082B7E002EE37B /* CoreTextLinkData.h */,
+				FD3CE51D21082B7E002EE37B /* CoreTextLinkData.m */,
+				FD3CE51F21082BB1002EE37B /* CoreTextUtils.h */,
+				FD3CE52021082BB1002EE37B /* CoreTextUtils.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		FD5426B8210032A400708D45 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +137,7 @@
 		FD5426C3210032A400708D45 /* CoreText */ = {
 			isa = PBXGroup;
 			children = (
+				FD3CE51B21082B64002EE37B /* Model */,
 				FD54270121003D9300708D45 /* SingleResponsibility */,
 				FD5426FA21003B7D00708D45 /* Category */,
 				FD5426C4210032A400708D45 /* AppDelegate.h */,
@@ -313,12 +331,14 @@
 				FD5426C9210032A400708D45 /* ViewController.m in Sources */,
 				FD54270A21003E8600708D45 /* CoreTextData.m in Sources */,
 				FD5426D4210032A500708D45 /* main.m in Sources */,
+				FD3CE51E21082B7E002EE37B /* CoreTextLinkData.m in Sources */,
 				FD54270021003BB800708D45 /* UIView+frameAdjust.m in Sources */,
 				FD5426F8210032CF00708D45 /* CTDisplayView.m in Sources */,
 				FD5426C6210032A400708D45 /* AppDelegate.m in Sources */,
 				FD54270721003E2000708D45 /* CTFrameParser.m in Sources */,
 				FD54270421003DCD00708D45 /* CTFrameParserConfig.m in Sources */,
 				FD54270D210040B200708D45 /* CoreTextDisplayView.m in Sources */,
+				FD3CE52121082BB1002EE37B /* CoreTextUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

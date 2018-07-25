@@ -33,6 +33,7 @@
     // 将生成好的CTFrameRef实例和计算好的缓制高度保存到CoreTextData实例中，最后返回CoreTextData实例
     CoreTextData *data = [[CoreTextData alloc] init];
     data.ctFrame = frame;
+    data.linkArray = [NSMutableArray array];
     data.height = textHeight;
     
     // 释放内存

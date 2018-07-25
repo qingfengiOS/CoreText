@@ -7,9 +7,36 @@
 //
 
 #import "CoreTextDisplayView.h"
+#import "CoreTextUtils.h"
 
 @implementation CoreTextDisplayView
 
+#pragma mark - Init
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self setupEvents];
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self setupEvents];
+    }
+    return self;
+}
+
+#pragma mark - InitRecognizer
+- (void)setupEvents {
+    UIGestureRecognizer * tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                  action:@selector(userTapGestureDetected:)];
+    [self addGestureRecognizer:tapRecognizer];
+    self.userInteractionEnabled = YES;
+}
+
+#pragma mark - CustomDraw
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     
@@ -23,5 +50,20 @@
     }
 }
 
+
+#pragma mark - EventResponse
+- (void)userTapGestureDetected:(UIGestureRecognizer *)recognizer {
+    CGPoint point = [recognizer locationInView:self];
+    
+    CoreTextLinkData *linkData = [CoreTextUtils touchLinkInView:self atPoint:point data:self.data];
+    if (linkData) {
+        NSLog(@"url = %@",linkData.url);
+        NSDictionary *userInfo = @{ @"linkData": linkData };
+        
+        return;
+    }
+    
+    
+}
 
 @end

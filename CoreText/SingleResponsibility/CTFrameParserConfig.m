@@ -14,8 +14,8 @@
 - (instancetype)init {
     if (self = [super init]) {
         _width = 200.0f;
-        _fontSize = 16.0f;
-        _lineSpace = 8.0f;
+        _fontSize = 13.0f;
+        _lineSpace = 2.0f;
         _textColor = RGB(51, 51, 51);
     }
     return self;
